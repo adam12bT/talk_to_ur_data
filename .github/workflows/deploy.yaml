@@ -1,0 +1,54 @@
+name: CI/CD — Test & Deploy to Hugging Face Spaces
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run tests
+        env:
+          # Live RAGAS / agent tests auto-skip if this is unset — no API key needed for CI
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          pytest tests/ -v
+
+  deploy:
+    name: Deploy to Hugging Face Space
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE_REPO: ${{ secrets.HF_SPACE_REPO }}  # e.g. your-username/ai-knowledge-agent
+        run: |
+          git config --global user.email "ci@github-actions.local"
+          git config --global user.name "GitHub Actions"
+          git remote add space "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE_REPO}"
+          git push --force space main
