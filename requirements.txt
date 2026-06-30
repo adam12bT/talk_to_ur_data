@@ -9,6 +9,7 @@ google-generativeai>=0.8.0
 # Vector store & embeddings
 chromadb>=0.5.0
 sentence-transformers>=3.0.0
+langchain-huggingface>=0.1.0
 
 # Document loaders
 pypdf>=4.0.0
@@ -37,3 +38,7 @@ pandas>=2.2.0
 
 # Added for new UI pages
 plotly>=5.22.0
+
+# Qdrant Cloud backend (persistent vector storage for HF Spaces deployment)
+qdrant-client>=1.12.0
+langchain-qdrant>=0.2.0
