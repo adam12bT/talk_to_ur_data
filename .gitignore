@@ -1,0 +1,27 @@
+# Environment
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Vector store (local database files)
+chroma_db/
+
+# Temporary files
+/tmp/
+*.tmp
+
+# Evaluation output
+evaluation_results.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

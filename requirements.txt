@@ -1,0 +1,39 @@
+# Core LLM & agent
+langchain>=0.3.0
+langchain-google-genai>=2.0.0
+langchain-community>=0.3.0
+langchain-core>=0.3.0
+langgraph>=0.2.0
+google-generativeai>=0.8.0
+
+# Vector store & embeddings
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+
+# Document loaders
+pypdf>=4.0.0
+unstructured>=0.14.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# Web search (free, no API key)
+duckduckgo-search>=6.1.0
+
+# Evaluation
+ragas>=0.1.9
+datasets>=2.19.0
+
+# API & UI
+fastapi>=0.111.0
+uvicorn>=0.30.0
+streamlit>=1.35.0
+python-multipart>=0.0.9
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.7.0
+rich>=13.7.0
+pandas>=2.2.0
+
+# Added for new UI pages
+plotly>=5.22.0

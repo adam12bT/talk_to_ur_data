@@ -1,0 +1,58 @@
+[
+  {
+    "timestamp": "2026-06-28T16:09:49.387807",
+    "unix_ts": 1782662989.387808,
+    "chunk_count": 5,
+    "label": "Manual snapshot",
+    "avg_score": 0.0395,
+    "query_scores": {
+      "What is retrieval-augmented generation?": 0.0,
+      "How does a vector database work?": 0.1977,
+      "What is semantic search?": 0.0,
+      "How are embeddings created?": 0.0,
+      "What is a language model?": 0.0
+    }
+  },
+  {
+    "timestamp": "2026-06-30T09:49:36.346759",
+    "unix_ts": 1782812976.3467598,
+    "chunk_count": 7,
+    "label": "Manual snapshot",
+    "avg_score": 0.0395,
+    "query_scores": {
+      "What is retrieval-augmented generation?": 0.0,
+      "How does a vector database work?": 0.1977,
+      "What is semantic search?": 0.0,
+      "How are embeddings created?": 0.0,
+      "What is a language model?": 0.0
+    }
+  },
+  {
+    "timestamp": "2026-06-30T09:55:32.845167",
+    "unix_ts": 1782813332.8451679,
+    "chunk_count": 80,
+    "label": "Added URL: https://en.wikipedia.org/wiki/Retrieval-augmented_generation",
+    "avg_score": 0.1051,
+    "query_scores": {
+      "What is retrieval-augmented generation?": 0.3276,
+      "How does a vector database work?": 0.1977,
+      "What is semantic search?": 0.0,
+      "How are embeddings created?": 0.0,
+      "What is a language model?": 0.0
+    }
+  },
+  {
+    "timestamp": "2026-06-30T10:31:25.498926",
+    "unix_ts": 1782815485.4989266,
+    "chunk_count": 0,
+    "label": "Manual benchmark run",
+    "avg_score": 0.0,
+    "query_scores": {
+      "What is retrieval-augmented generation?": 0.0,
+      "How does a vector database work?": 0.0,
+      "What is semantic search?": 0.0,
+      "How are embeddings created?": 0.0,
+      "What is a language model?": 0.0
+    }
+  }
+]
