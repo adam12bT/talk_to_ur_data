@@ -1,3 +1,14 @@
+---
+title: Talk To Ur Data
+emoji: 🤖
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+sdk_version: "1.58.0"
+app_file: app.py
+pinned: false
+---
+
 # AI Knowledge Agent — Intégration et Évaluation d'Agents IA
 
 A full-stack autonomous AI research agent that can ingest documents, search the web, reason over a knowledge base, and evaluate its own performance. Built in Python with LangChain, ChromaDB, and a Streamlit UI.
