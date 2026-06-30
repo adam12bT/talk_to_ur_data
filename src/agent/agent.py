@@ -91,7 +91,17 @@ class KnowledgeAgent:
         answer = ""
         for msg in reversed(all_messages):
             if isinstance(msg, AIMessage) and msg.content:
-                answer = msg.content
+                raw = msg.content
+                # Newer LangChain/Gemini returns content as a list of blocks
+                # e.g. [{'type': 'text', 'text': '...', 'extras': {...}}]
+                if isinstance(raw, list):
+                    answer = " ".join(
+                        block.get("text", "") if isinstance(block, dict) else str(block)
+                        for block in raw
+                        if block
+                    ).strip()
+                else:
+                    answer = str(raw)
                 break
 
         # Collect tool steps from ToolMessage objects
