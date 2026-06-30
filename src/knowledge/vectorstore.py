@@ -36,7 +36,7 @@ from src.knowledge.embeddings import get_embeddings
 # ── Backend-specific store builders ─────────────────────────────────────────
 
 def _get_chroma_store():
-    from langchain_community.vectorstores import Chroma
+    from langchain_chroma import Chroma
     from chromadb.config import Settings
     return Chroma(
         collection_name=CHROMA_COLLECTION_NAME,
@@ -138,8 +138,8 @@ def count_documents() -> int:
             return 0
     else:
         try:
-            col = _chroma_client().get_collection(CHROMA_COLLECTION_NAME)
-            return col.count()
+            store = _get_chroma_store()
+            return store._collection.count()
         except Exception:
             return 0
 
@@ -177,8 +177,8 @@ def get_all_chunks() -> list[dict]:
             return []
     else:
         try:
-            col = _chroma_client().get_collection(CHROMA_COLLECTION_NAME)
-            raw = col.get(include=["documents", "metadatas"])
+            store = _get_chroma_store()
+            raw = store._collection.get(include=["documents", "metadatas"])
             return [
                 {"id": doc_id, "content": doc, "metadata": meta or {}}
                 for doc_id, doc, meta in zip(
@@ -202,6 +202,7 @@ def reset_vectorstore() -> None:
             pass
     else:
         try:
-            _chroma_client().delete_collection(CHROMA_COLLECTION_NAME)
+            store = _get_chroma_store()
+            store._client.delete_collection(CHROMA_COLLECTION_NAME)
         except Exception:
             pass

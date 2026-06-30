@@ -8,6 +8,7 @@ from __future__ import annotations
 from langchain.tools import tool
 from ddgs import DDGS
 
+
 @tool
 def web_search_tool(query: str) -> str:
     """Search the live web for up-to-date information not in the knowledge base.
